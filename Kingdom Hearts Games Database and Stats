@@ -1,0 +1,29 @@
+--Create Kingdom Hearts games database
+
+CREATE TABLE kingdom_hearts_games (
+    id INTEGER PRIMARY KEY,
+    title TEXT,
+    year_released INTEGER,
+    rating INTEGER);
+
+INSERT INTO kingdom_hearts_games VALUES (1, "Kingdom Hearts", 2002, 9.5);
+INSERT INTO kingdom_hearts_games VALUES (2, "Kingdom Hearts Chain of Memories", 2004, 8);
+INSERT INTO kingdom_hearts_games VALUES (3, "Kingdom Hearts 2", 2005, 9);
+INSERT INTO kingdom_hearts_games VALUES (4, "Kingdom Hearts RE:Coded", 2008, 6.5);
+INSERT INTO kingdom_hearts_games VALUES (5, "Kingdom Hearts 358/2 Days", 2009, 7);
+INSERT INTO kingdom_hearts_games VALUES (6, "Kingdom Hearts Birth By Sleep", 2010, 8.5);
+INSERT INTO kingdom_hearts_games VALUES (7, "Kingdom Hearts 3D: Dream Drop Distance", 2012, 8);
+INSERT INTO kingdom_hearts_games VALUES (8, "Kingdom Hearts X Unchained", 2015, 7);
+INSERT INTO kingdom_hearts_games VALUES (9, "Kindom Hearts 3", 2019, 8.5);
+
+--display database ordered by most recent game released.
+SELECT * FROM kingdom_hearts_games
+    ORDER BY year_released DESC;
+    
+--what is the series overall avg rating?
+SELECT AVG(rating) "series_avg_rating" FROM kingdom_hearts_games;
+
+--what are the top 3 rated games in the series?
+SELECT title, year_released, rating FROM kingdom_hearts_games
+    ORDER BY rating DESC
+    LIMIT 3;
